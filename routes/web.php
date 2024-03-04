@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //fetch all users
+    $users = DB::select("select * from users");
+    dd($users);
+
+    //fetch a specific user
+    $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
+    dd($user);
 });
 
 Route::get('/dashboard', function () {
