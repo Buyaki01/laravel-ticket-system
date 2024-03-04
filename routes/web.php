@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     //fetch all users
     // $users = DB::select("select * from users");
-    $users = DB::table('users')->get();
-    dd($users);
+    // $users = DB::table('users')->get();
+    // dd($users);
 
     //fetch a specific user
     // $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
-    $user = DB::table('users')->where('id', 1)->get();
+    // $user = DB::table('users')->where('id', 1)->get();
     // dd($user);
 
     //Create a new user
@@ -32,23 +32,23 @@ Route::get('/', function () {
     //     'sweta@gmail.com',
     //     'Password',
     // ]);
-    $user = DB::table('users')->insert([
-        'name' => 'Buyaki',
-        'email' => 'buyakisweta@gmail.com',
-        'password' => 'Password'
-    ]);
+    // $user = DB::table('users')->insert([
+    //     'name' => 'Buyaki',
+    //     'email' => 'buyakisweta@gmail.com',
+    //     'password' => 'Password'
+    // ]);
     // dd($user);
 
     // Update user
     // $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
-    $updateUser = DB::table('users')->where('id', 5)->update([
-        'email' => "buyaki@gmail.com"
-    ]);
+    // $updateUser = DB::table('users')->where('id', 5)->update([
+    //     'email' => "buyaki@gmail.com"
+    // ]);
     // dd($updateUser);
 
     // Delete a user
-    // $deletedUser = DB::delete("delete from users where id = ?", [4]);
-    // dd($deletedUser);
+    $deletedUser = DB::table('users')->where('id', 5)->delete();
+    dd($deletedUser);
 });
 
 Route::get('/dashboard', function () {
