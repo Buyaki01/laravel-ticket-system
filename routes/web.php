@@ -17,11 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     //fetch all users
-    $users = DB::select("select * from users");
-    dd($users);
+    // $users = DB::select("select * from users");
+    // dd($users);
 
     //fetch a specific user
-    $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
+    // $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
+    // dd($user);
+
+    //Create a new user
+    $user = DB::insert('insert into users (name, email, password) values (?,?,?)', [
+        'Sweta',
+        'sweta@gmail.com',
+        'Password',
+    ]);
+
     dd($user);
 });
 
