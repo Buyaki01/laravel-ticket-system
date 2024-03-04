@@ -25,13 +25,17 @@ Route::get('/', function () {
     // dd($user);
 
     //Create a new user
-    $user = DB::insert('insert into users (name, email, password) values (?,?,?)', [
-        'Sweta',
-        'sweta@gmail.com',
-        'Password',
-    ]);
+    // $user = DB::insert('insert into users (name, email, password) values (?,?,?)', [
+    //     'Sweta',
+    //     'sweta@gmail.com',
+    //     'Password',
+    // ]);
 
-    dd($user);
+    // dd($user);
+
+    // Update user
+    $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
+    dd($updateUser);
 });
 
 Route::get('/dashboard', function () {
