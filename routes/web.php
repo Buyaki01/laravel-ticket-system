@@ -34,8 +34,12 @@ Route::get('/', function () {
     // dd($user);
 
     // Update user
-    $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
-    dd($updateUser);
+    // $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
+    // dd($updateUser);
+
+    // Delete a user
+    $deletedUser = DB::delete("delete from users where id = ?", [4]);
+    dd($deletedUser);
 });
 
 Route::get('/dashboard', function () {
