@@ -27,7 +27,8 @@ Route::get('/', function () {
     // $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
     // $user = DB::table('users')->where('id', 1)->get();
     // $user = User::where('id', 1)->get();
-    // dd($user);
+    $user = User::where('id', 1)->first();
+    dd($user->name);
 
     //Create a new user
     // $user = DB::insert('insert into users (name, email, password) values (?,?,?)', [
@@ -36,16 +37,16 @@ Route::get('/', function () {
     //     'Password',
     // ]);
     // $user = DB::table('users')->insert([
-    //     'name' => 'Buyaki',
-    //     'email' => 'buyakisweta@gmail.com',
+    //     'name' => 'Laptop',
+    //     'email' => 'laptopsweta@gmail.com',
     //     'password' => 'Password'
     // ]);
-    $user = User::create([
-        'name' => 'Lion',
-        'email' => 'lion@gmail.com',
-        'password' => bcrypt('Password')
-    ]);
-    dd($user);
+    // $user = User::create([
+    //     'name' => 'Cat',
+    //     'email' => 'cat@gmail.com',
+    //     'password' => 'Password'
+    // ]);
+    // dd($user);
 
     // Update user
     // $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
