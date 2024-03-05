@@ -40,23 +40,27 @@ Route::get('/', function () {
     //     'email' => 'buyakisweta@gmail.com',
     //     'password' => 'Password'
     // ]);
-    $user = User::create([
-        'name' => 'Leon',
-        'email' => 'leon@gmail.com',
-        'password' => 'Password'
-    ]);
-    dd($user);
+    // $user = User::create([
+    //     'name' => 'Leon',
+    //     'email' => 'leon@gmail.com',
+    //     'password' => 'Password'
+    // ]);
+    // dd($user);
 
     // Update user
     // $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
     // $updateUser = DB::table('users')->where('id', 5)->update([
     //     'email' => "buyaki@gmail.com"
     // ]);
-    // dd($updateUser);
+    $updateUser = User::where('id', 6)->update([
+        'email' => 'leonne@gmail.com'
+    ]);
+    dd($updateUser);
 
     // Delete a user
     // $deletedUser = DB::table('users')->where('id', 5)->delete();
-    // dd($deletedUser);
+    $deletedUser = User::where('id', 6)->delete();
+    dd($deletedUser);
 });
 
 Route::get('/dashboard', function () {
