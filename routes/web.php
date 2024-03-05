@@ -20,14 +20,14 @@ Route::get('/', function () {
     //fetch all users
     // $users = DB::select("select * from users");
     // $users = DB::table('users')->get();
-    $users = User::all();
-    dd($users);
+    // $users = User::all();
+    // dd($users);
 
     //fetch a specific user
     // $user = DB::select("select * from users where email=?", ['rittahbuyaki@gmail.com']);
     // $user = DB::table('users')->where('id', 1)->get();
-    $user = User::where('id', 1)->get();
-    dd($user);
+    // $user = User::where('id', 1)->get();
+    // dd($user);
 
     //Create a new user
     // $user = DB::insert('insert into users (name, email, password) values (?,?,?)', [
@@ -40,8 +40,12 @@ Route::get('/', function () {
     //     'email' => 'buyakisweta@gmail.com',
     //     'password' => 'Password'
     // ]);
-
-    // dd($user);
+    $user = User::create([
+        'name' => 'Leon',
+        'email' => 'leon@gmail.com',
+        'password' => 'Password'
+    ]);
+    dd($user);
 
     // Update user
     // $updateUser = DB::update('UPDATE users SET email = ? WHERE id = ?', ['buyaki@gmail.com', 4]);
