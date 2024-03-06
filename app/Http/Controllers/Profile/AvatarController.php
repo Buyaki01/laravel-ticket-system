@@ -8,9 +8,9 @@ use App\Http\Requests\UpdateAvatarRequest;
 class AvatarController extends Controller
 {
     public function update(UpdateAvatarRequest $request) {
-        $path = $request->file('avatar')->store('avatars');
+        $path = $request->file('avatar')->store('avatars', 'public');
         
-        auth()->user()->update(['avatar' => storage_path('app')."/$path"]);
+        auth()->user()->update(['avatar' => $path]);
 
         return response()->redirectTo(route('profile.edit'))->with('success', 'Avatar updated successfully.');
     }
