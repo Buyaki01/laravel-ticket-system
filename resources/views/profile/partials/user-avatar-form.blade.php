@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form method="post" action="{{ route('profile.avatar') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.avatar') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @method('patch')
         @csrf
 
