@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class AvatarController extends Controller
 {
     public function update() {
-        return response()->redirectTo('/profile');
+        return response()->redirectTo(route('profile.edit'))->with('success', 'Avatar was successfully updated.');
     }
 }
