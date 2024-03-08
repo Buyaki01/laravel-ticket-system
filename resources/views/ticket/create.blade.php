@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-4 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <h1 class="text-white text-lg font-bold">Create new support ticket</h1>
         <div class="w-full sm:max-w-xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             <form method="POST" action="{{ route('ticket.create') }}">
@@ -13,13 +13,13 @@
         
                 <div class="mt-4">
                     <x-input-label for="description" :value="__('Description')" />
-                    <x-textarea id="description" name="description"/>
+                    <x-textarea id="description" placeholder="Add description" name="description" class="block mt-1"/>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
                 <div class="mt-4">
                     <x-input-label for="attachment" :value="__('Attachment (if any)')" />
-                    <input type="file" name="attachment" id="attachment"/>
+                    <x-file-input type="file" name="attachment" id="attachment" class="block mt-1"/>
                     <x-input-error :messages="$errors->get('attachment')" class="mt-2" />
                 </div>
         
