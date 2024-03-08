@@ -35,16 +35,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/auth/redirect', function () {
+Route::post('/auth/redirect', function () {
     return Socialite::driver('github')->redirect();
-});
+})->name('login.github');
 
 Route::get('/auth/callback', function () {
     $user = Socialite::driver('github')->user();
 
     $user = User:: firstOrCreate(['email' => $user->email], [
         'name' => $user->name,
-        'password' => 'password',
+        'password' => bcrypt('Password'),
     ]);
 
     Auth::login($user);
