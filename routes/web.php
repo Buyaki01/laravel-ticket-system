@@ -50,3 +50,9 @@ Route::get('/auth/callback', function () {
     Auth::login($user);
     return redirect('/dashboard');
 });
+
+Route::middleware('auth')->group(function(){
+    Route::get('/ticket/create', function(){
+        return view('ticket.create');
+    });
+});
