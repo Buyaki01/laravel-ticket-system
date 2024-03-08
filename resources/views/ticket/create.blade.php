@@ -13,14 +13,7 @@
         
                 <div class="mt-4">
                     <x-input-label for="description" :value="__('Description')" />
-        
-                    <textarea 
-                        id="description" 
-                        class="block mt-1 w-full"
-                        name="description"
-                    >
-                    </textarea>
-        
+                    <x-textarea id="description" name="description"/>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
