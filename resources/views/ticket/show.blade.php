@@ -3,34 +3,45 @@
         <h1 class="font-bold text-3xl mb-6">{{ $ticket->title }}</h1>
 
         <div class="w-full sm:max-w-xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-            <div class="flex flex-col">
-                <p class="mb-4 text-xl text-bold text-wrap">{{ $ticket->description }}</p>
-
+            <div class="flex flex-col mb-4">
+                <p class="mb-4 text-xl text-bold break-words text-wrap">{{ $ticket->description }}</p>
                 <div class="flex items-center justify-between text-sm">
                     <p>Created: {{ $ticket->created_at->diffForHumans() }}</p>
 
                     @if ($ticket->attachment)
-                        <a href="{{ '/storage/' . $ticket->attachment }}" target="_blank" class="mt-2 px-2 py-1 hover:underline">View Attachment</a>
+                        <a href="{{ '/storage/' . $ticket->attachment }}" target="_blank" class="no-underline hover:underline">View Attachment</a>
                     @endif
                 </div>
             </div>
 
-            <div class="mt-4 flex items-center gap-4">
-                <a href="{{ route('ticket.edit', $ticket->id) }}">
+            <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <a href="{{ route('ticket.edit', $ticket->id) }}">
+                        <x-primary-button>
+                            <i class="fas fa-edit" style="margin-right: 0.25rem;"></i> Edit
+                        </x-primary-button>
+                    </a>
+    
+                    <form method="post" action="{{ route('ticket.destroy', $ticket->id) }}">
+                        @method('delete')
+                        @csrf
+    
+                        <x-danger-button>
+                            <i class="fas fa-trash-alt" style="margin-right: 0.25rem;"></i> Delete
+                        </x-danger-button>
+                    </form>
+                </div>
+
+                <div class="flex items-center gap-4">
                     <x-primary-button>
-                        <i class="fas fa-edit"></i> Edit
+                        <i class="fas fa-check" style="margin-right: 0.25rem;"></i> Approve
                     </x-primary-button>
-                </a>
-
-                <form method="post" action="{{ route('ticket.destroy', $ticket->id) }}">
-                    @method('delete')
-                    @csrf
-
                     <x-danger-button>
-                        <i class="fas fa-trash-alt"></i> Delete
+                        <i class="fas fa-times" style="margin-right: 0.25rem;"></i> Reject
                     </x-danger-button>
-                </form>
+                </div>
             </div>
+
         </div>
     </section>
 </x-app-layout>
