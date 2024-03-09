@@ -7,8 +7,8 @@
 
             <p>{{ $ticket->created_at->diffForHumans() }}</p>
 
-            @if($ticket->attachment)
-                <p>Attachment</p>
+            @if ($ticket->attachment)
+                <a href="{{ '/storage/' . $ticket->attachment }}" target="_blank">Attachment</a>
             @endif
         </div>
     </section>
