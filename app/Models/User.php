@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
+use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,4 +46,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected function isAdmin(): CastsAttribute
+    {
+        $admins = ['rittahbuyaki@gmail.com', 'rittasweta@gmail.com'];
+
+        return CastsAttribute::make(
+            get: fn() => in_array($this->email, $admins)
+        );
+    }
 }
