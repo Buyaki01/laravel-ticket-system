@@ -34,12 +34,25 @@
 
                 @if (auth()->user()->isAdmin)
                     <div class="flex items-center gap-4">
-                        <x-primary-button>
-                            <i class="fas fa-check" style="margin-right: 0.25rem;"></i> Approve
-                        </x-primary-button>
-                        <x-danger-button>
-                            <i class="fas fa-times" style="margin-right: 0.25rem;"></i> Reject
-                        </x-danger-button>
+                        <form method="POST" action="{{ route('ticket.update', $ticket->id) }}">
+                            @csrf
+                            @method('patch')
+
+                            <input type="hidden" name="status" value="resolved" />
+                            <x-primary-button>
+                                <i class="fas fa-check" style="margin-right: 0.25rem;"></i> Resolved
+                            </x-primary-button>
+                        </form>
+
+                        <form method="POST" action="{{ route('ticket.update', $ticket->id) }}">
+                            @csrf
+                            @method('patch')
+
+                            <input type="hidden" name="status" value="rejected" />
+                            <x-danger-button>
+                                <i class="fas fa-times" style="margin-right: 0.25rem;"></i> Rejected
+                            </x-danger-button>
+                        </form>
                     </div>
                 @else
                     <p class="text-white text-lg font-bold">Status: {{ $ticket->status }}</p>
