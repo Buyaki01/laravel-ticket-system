@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\User;
+use App\Notifications\UpdateUserOnTicketStatus;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -70,7 +72,9 @@ class TicketController extends Controller
         $ticket->update($request->except('attachment'));
 
         if($request->has('status')){
-            
+            $user = User::find($ticket->user_id);
+
+            return (new UpdateUserOnTicketStatus($ticket))->toMail($user);
         }
 
         if($request->file('attachment')){
