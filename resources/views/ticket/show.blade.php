@@ -16,9 +16,11 @@
             </div>
 
             <div class="mt-4 flex items-center gap-4">
-                <x-primary-button>
-                    <i class="fas fa-edit"></i> Edit
-                </x-primary-button>
+                <a href="{{ route('ticket.edit', $ticket->id) }}">
+                    <x-primary-button>
+                        <i class="fas fa-edit"></i> Edit
+                    </x-primary-button>
+                </a>
 
                 <form method="post" action="{{ route('ticket.destroy', $ticket->id) }}">
                     @method('delete')
