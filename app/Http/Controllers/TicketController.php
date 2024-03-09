@@ -72,7 +72,8 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->update($request->validated());
+        return redirect(route('ticket.index'));
     }
 
     /**
