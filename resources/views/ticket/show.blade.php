@@ -4,7 +4,7 @@
 
         <div class="w-full sm:max-w-xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             <div class="flex flex-col">
-                <p class="mb-4 text-xl text-bold">{{ $ticket->description }}</p>
+                <p class="mb-4 text-xl text-bold text-wrap">{{ $ticket->description }}</p>
 
                 <div class="flex items-center justify-between text-sm">
                     <p>Created: {{ $ticket->created_at->diffForHumans() }}</p>
@@ -19,9 +19,15 @@
                 <x-primary-button>
                     <i class="fas fa-edit"></i> Edit
                 </x-primary-button>
-                <x-danger-button>
-                    <i class="fas fa-trash-alt"></i> Delete
-                </x-danger-button>
+
+                <form method="post" action="{{ route('ticket.destroy', $ticket->id) }}">
+                    @method('delete')
+                    @csrf
+
+                    <x-danger-button>
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </x-danger-button>
+                </form>
             </div>
         </div>
     </section>
