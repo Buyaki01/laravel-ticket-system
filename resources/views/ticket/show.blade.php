@@ -32,14 +32,18 @@
                     </form>
                 </div>
 
-                <div class="flex items-center gap-4">
-                    <x-primary-button>
-                        <i class="fas fa-check" style="margin-right: 0.25rem;"></i> Approve
-                    </x-primary-button>
-                    <x-danger-button>
-                        <i class="fas fa-times" style="margin-right: 0.25rem;"></i> Reject
-                    </x-danger-button>
-                </div>
+                @if (auth()->user()->isAdmin)
+                    <div class="flex items-center gap-4">
+                        <x-primary-button>
+                            <i class="fas fa-check" style="margin-right: 0.25rem;"></i> Approve
+                        </x-primary-button>
+                        <x-danger-button>
+                            <i class="fas fa-times" style="margin-right: 0.25rem;"></i> Reject
+                        </x-danger-button>
+                    </div>
+                @else
+                    <p class="text-white text-lg font-bold">Status: {{ $ticket->status }}</p>
+                @endif
             </div>
 
         </div>
